@@ -1,0 +1,190 @@
+#+title: Work Plan
+#+DATE: <2026-06-10 Wed 13:54>
+#+AUTHOR: Mohsen BANAN
+#+OPTIONS: toc:4
+#+TAGS: me ai aiAndMe
+
+# Provenance (installed once by aiActivity.cs --- not regenerated):
+#   Date:      2026-11-15T06:12:50+00:00
+#   User:      bystar
+#   Templates: /bisos/apps/defaults/ai-templates
+#   Command:   /bisos/venv/py3/devbin/aiActivity.cs -i initiate --activity=bisos-pip
+
+####+BEGIN: b:ai:workflow/driver
+*  [[elisp:(revert-buffer)][revert-buffer]] | [[elisp:(toggle-read-only)][read/wr]] | [[elisp:(show-all)][Show-All]]  [[elisp:(org-shifttab)][Overview]]  [[elisp:(progn (org-shifttab) (org-content))][Content]] | [[elisp:(delete-other-windows)][(1)]] | [[elisp:(progn (save-buffer) (kill-buffer))][S&Q]] [[elisp:(save-buffer)][Save]] [[elisp:(kill-buffer)][Quit]] [[elisp:(bury-buffer)][Bury]] [[elisp:(magit)][Magit]]
+*  [[elisp:(org-cycle)][AI Workflow Driver :: /bx- commands]]    *After |S|: submitted*
+  newStart :: [[elisp:(blee:bnsm:panel-goto "/bisos/panels/bisos-core/bisos-pip/bisos.aiActivity/newStart/_nodeBase_")][Panel]] | [[bashRun:vscodeClaude-assemble.cs -i fullCheck][setup-check]] | [[bashRun:vscodeClaude-assemble.cs -i fullUpdate][setup]] | [[elisp:(b:vscode/init)][partner-init]] | [[elisp:(b:vscode/partnerShow)][partner-show]] | [[aiActivity:session-start][session-start]]
+  VS Code  :: [[elisp:(b:vscode/fileOpen)][Visit]] | [[elisp:(b:vscode/rootOpen)][root-window]] | [[elisp:(b:vscode:claude/dispatch)][Transient]]
+  Session  :: [[elisp:(b:vscode:claude/sessionSelect)][select-session]] | [[aiActivity:session-start][session-start]] | [[aiActivity:session-report][session-report]]  *|S|*  [[aiActivity:S=session-start][session-start]]
+  Activity :: [[aiActivity:activity-reach][activity-reach]] | [[aiActivity:activity-report][activity-report]]  *|S|*  [[aiActivity:S=activity-reach][activity-reach]]
+  Read     :: [[aiActivity:status-read][status-read]] | [[aiActivity:archive-read][archive-read]] | [[aiActivity:ai-outputs][ai-outputs]]  *|S|*  [[aiActivity:S=status-read][status-read]] | [[aiActivity:S=archive-read][archive-read]] | [[aiActivity:S=ai-outputs][ai-outputs]]
+  Work     :: [[aiActivity:todo-do][todo-do]] | [[aiActivity:todo-done][todo-done]]  *|S|*  [[aiActivity:S=todo-do][todo-do]] | [[aiActivity:S=todo-done][todo-done]]
+  Record   :: [[aiActivity:status-update][status-update]] | [[aiActivity:archive-update][archive-update]]  *|S|*  [[aiActivity:S=status-update][status-update]] | [[aiActivity:S=archive-update][archive-update]]
+  Git      :: [[aiActivity:git-commit-msg][git-commit-msg]] | [[aiActivity:git-commit-walk][git-commit-walk]]  *|S|*  [[aiActivity:S=git-commit-msg][git-commit-msg]]
+  Close    :: [[aiActivity:git-uncommitted-list][git-uncommitted-list]] | [[aiActivity:session-verify][session-verify]]  *|S|*  [[aiActivity:S=git-uncommitted-list][git-uncommitted-list]] | [[aiActivity:S=session-verify][session-verify]]
+
+####+END:
+
+####+BEGIN: b:ai:file/particulars
+* AI Working Context
+  Working Directory: /bisos/git/auth/bxRepos/blee/overview
+  File: /bisos/git/auth/bxRepos/blee/overview/AI-WorkPlan.org
+  Activity: bisos-pip
+  Companion Docs: AI-WORKFLOW.org, AI-Activity.org, AI-DevStatus.org
+####+END:
+
+This Work Plan file drives the AI collaborative development.
+Interactions are broken down into "Stages". Each Stage has a set
+of TODOs that I work with Claude to accomplish.
+
+Note to a fresh Claude: read this file together with AI-WORKFLOW.org,
+AI-Activity.org and AI-DevStatus.org to orient yourself. The =<<Context Confirmation>>=
+TODO below is the standard first step, or use =/bx-session-start= as the automated equivalent.
+TODOs tagged =:ai:= are assigned to Claude. After completing a TODO, summarize results
+under =----- Results: ------= and mark it DONE.
+
+
+* Overview, Purpose and Context
+
+<<Overview>>
+
+This is the *overview repo* of the blee gitGroup: the git repos under =/bisos/git/bxRepos/blee/=
+(Blee's Emacs packages and environments; about 40, plus the =blee= collection repo itself). An overview
+repo drives what is common to its gitGroup's repos. The pattern started with bisos-pip's overview
+(=bisos-pip/overview=, WorkPlan Stages 4-5) and gitist's gitGroup engine (=bisos-pip/gitist= WorkPlan
+Stage 7); blee is the second gitGroup, and the first that is not pip packages.
+
+
+* Stage 0: Confirm AI's Understanding of This Repo's Context
+
+Goal: Confirm AI's understanding of the context and capture that in [[Context Confirmation]] TODO.
+
+
+* Stage 0 TODOs
+** +
+** LOOP [#A] <<Context Confirmation>> for AI (typically triggered by /bx-session-start) :aiAndMe:
+SCHEDULED: <2026-06-09 Tue>
+Must be repeated each time a new Claude instance is started here.
+Based on the series of files starting from CLAUDE.md in this repo,
+describe succinctly what you have understood.
+Enumerate explicitly which files you have imported and which you have considered.
+Prompt the user to confirm that the desired/appropriate model (/model) is being used for this project.
+Since this is to be repeated, leave the todo tag as LOOP.
+** -
+
+* Stage 1: Misc Place Holder 
+
+<<Stage 1>>
+
+Goal: A placeholder for misc ideas and TODOs
+
+
+* Stage 1 TODOs (Misc)
+** +
+** TODO [#C] A Placeholder
+** -
+
+
+* Stage 2: The blee gitGroup --- Rules, Status and the Magit List
+
+<<Stage 2>>
+
+Goal: repeat for blee what bisos-pip/overview has: a gitGroup plant whose rules every blee repo
+follows (checked and applied with gitist's engine), and the gitGroup's cached list for Blee's Magit
+menu. Two overviews make the pattern.
+
+Decided (user, 2026-11-15):
+- *Not a package.* An overview of a gitGroup that is not pip packages stays outside packaging: the
+  plant is =py3/bin/blee_gitGroup.spcs= here, and bsip4's =bin/= (=/bisos/core/bsip/bin=, always on
+  PATH on a BISOS host) has a symlink to it,
+  =/bisos/git/bxRepos/blee/overview/py3/bin/blee_gitGroup.spcs=.
+  (bisos-pip's overview stays a pip package: its gitGroup is pip packages.)
+- *=.spcs=*: the plant is spread-planted --- gitGroup name and base come from where it really lives
+  (the symlink resolved): base = the overview repo's parent, name = its name. It declares only its rules.
+  gitist's =gitGroup_seedInfo.setup()= gains this (gitist WorkPlan 7.8); bisos-pip's explicit =.pcs=
+  is unchanged (a pip script may run from a copy whose path says nothing).
+- *Rules*: root =.gitignore= = =gitignore/emacs+py+tex= (as bisos-pip); *no* =.gitattributes= rule
+  (the only template, =gitattributes/py=, marks all but =*.py= as vendored --- elisp would vanish from
+  GitHub's language statistics); no generated-files rule (no =py3/README.rst= here).
+- *Cached list*: =/bisos/var/gitGroup/blee/cachedList.auth=, the =blee= collection repo included; Blee's
+  Magit menu lists it with no change (gitist 7.7).
+
+Survey (2026-11-15; 40 member repos): =.gitignore= 32 missing, 5 the shared old copy (as 44 bisos-pip
+repos had), 3 unique; =.gitattributes= (not a rule) 6 present.
+
+* Stage 2 TODOs  -- In Progress
+** +
+** TODO [#A] <<2.1>> The plant, README.org and the PATH symlink :aiAndMe:
+:PROPERTIES:
+:ORIGIN: Mohsen
+:IMPORTANCE: High
+:REPO: this, /bisos/git/bxRepos/bisos/bsip4 (the symlink), /bisos/git/bxRepos/bisos-pip/gitist (7.8)
+:BASE: this
+:FOUND: <2026-11-15 Sun>
+:END:
+gitist 7.8 first (path-derived =gitGroupName= / =base=). Then =py3/bin/blee_gitGroup.spcs= (rules only),
+=README.org= replacing =README.md=, and the symlink in bsip4's =bin/=.
+----- Results: ------
+2026-11-15 --- Done (user to commit here, in bsip4 and in gitist); not marked DONE.
+- gitist 7.8: =.spcs= plants get name and base from the plant's resolved path.
+- =py3/bin/blee_gitGroup.spcs=: rules only --- =.gitignore= from =emacs+py+tex=, with
+  =customRepos=["doom-emacs-framework"]= (added in 2.2: the first real =custom=).
+- =README.org= (what the blee gitGroup and this repo are; the plant, its rule, its commands; why no
+  =.gitattributes=); =README.md= deleted --- its first line (Blee is the ByStar Libre-Halaal Emacs
+  Environment) is kept; its install steps (=main/_emacs.blee= to =~/.emacs=) were dated and dropped.
+  =Panel.org= left as it was.
+- bsip4: =bin/blee_gitGroup.spcs= -> =/bisos/git/bxRepos/blee/overview/py3/bin/blee_gitGroup.spcs=
+  (a new symlink, untracked there). =which blee_gitGroup.spcs= finds it; run through it from =/tmp=:
+  =blee=, 40 members.
+** TODO [#A] <<2.2>> Status, cached list, update :aiAndMe:
+:PROPERTIES:
+:ORIGIN: Mohsen
+:IMPORTANCE: High
+:REPO: /bisos/git/bxRepos/blee/*
+:BASE: this
+:FOUND: <2026-11-15 Sun>
+:END:
+=blee_gitGroup.spcs -i gitGroup_status=, =-i gitGroup_cachedListUpdate=, =-i gitGroup_update= (missing
+and stale only; drift reviewed with =gitGroup_diff= before any =--replaceDrift=true=). The user stages
+and commits per repo.
+----- Results: ------
+2026-11-15 --- Status, review, update and cached list done; =--replaceDrift= awaits the user.
+- Status before: =.gitignore= drift 8, missing 32 (40 members).
+- Drift reviewed (=gitGroup_diff=): env, envsShare, org-img-link, overview, persian-input-method have
+  the shared old copy; aiplus adds =.aider*=; env3 adds =*_archive= and =.aider*= (no =.aider= files
+  in any blee repo; no archives in env3); *doom-emacs-framework* is a fork of Doom Emacs
+  (=bx-blee/doom-emacs-framework=) with upstream's =.gitignore= (=.local/=, =/modules/private=, ...),
+  so it is declared =custom= in the plant --- replacing it would expose Doom's =.local/= once used.
+- =gitGroup_update=: 32 =.gitignore= written. Status after: custom 1, drift 7, ok 32.
+- =gitGroup_cachedListUpdate=: =/bisos/var/gitGroup/blee/cachedList.auth=, 41 repos (=blee= itself
+  first). The running Blee lists both gitGroups: =("bisos-pip" "blee")=.
+*Pending (user):* =blee_gitGroup.spcs -i gitGroup_update --replaceDrift=true= for the 7 reviewed
+drifts; then commit per repo.
+** TODO [#B] <<2.3>> Magit =c t=: commit with a common message, for a gitGroup-wide change :aiAndMe:
+:PROPERTIES:
+:ORIGIN: Mohsen
+:IMPORTANCE: Medium
+:REPO: /bisos/git/bxRepos/blee/env3
+:BASE: this
+:FOUND: <2026-11-15 Sun>
+:END:
+A gitGroup-wide change (2.2) is one commit per repo with the same message. The message is an elisp
+variable set once (user: better than an environment variable --- no restart), not a file.
+----- Results: ------
+2026-11-15 --- Done in =blee/env3/plus/bcpg:magitPlus.el= (user to commit there); not marked DONE.
+- =bap:magit:commit:commonMsg= (the message); =bap:magit:commit:commonMsg/set= (prompts, the current
+  value as default; =C-q C-j= for a newline; empty unsets); =bap:magit:commit/withCommonMsg=
+  (=git commit --message=<msg> --edit= plus the commit menu's switches, so the commit buffer opens
+  filled: =C-c C-c= to commit; prompts when unset). =--message --edit=, not =--template=: git aborts a
+  commit whose message was not changed from its template.
+- Magit's commit menu: =c t= (its label shows the message's first line) and =c T= (set it); added
+  =with-eval-after-load 'magit-commit=, only when the keys are free (both were).
+- Tested in the running Blee (=load-file=): both suffixes present, the label with and without a
+  message, no duplicates on reload. Not tested: an actual commit.
+** -
+
+
+# Local Variables:
+# eval: (setq-local toc-org-max-depth 4)
+# eval: (setq-local org-log-done 'time)
+# End:

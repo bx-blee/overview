@@ -1,0 +1,32 @@
+#!/usr/bin/env python
+
+""" #+begin_org
+* ~[Summary]~ :: A spread-planted =PlantedCmndService= declaring the blee gitGroup's rules.
+#+end_org """
+
+""" #+begin_org
+* [[elisp:(org-cycle)][| ~Description~ |]] :: Planted on bisos.gitist's =gitGroup-seed.cs= (gitist WorkPlan Stage 7).
+Spread-planted: the gitGroup's name and base come from where this file really lives --- base is its
+overview repo's parent (=/bisos/git/bxRepos/blee=), the name is base's name (=blee=). On PATH through
+a symlink in =/bisos/core/bsip/bin= (the symlink is resolved). Every git repo under base is a member.
+- =blee_gitGroup.spcs -i gitGroup_status=  --- read-only
+- =blee_gitGroup.spcs -i gitGroup_update=  --- writes missing/stale files; never stages
+- =blee_gitGroup.spcs -i gitGroup_cachedListUpdate=  --- the list for Blee's Magit menu
+No =.gitattributes= rule: the only template (=gitattributes/py=) marks all but =*.py= as vendored.
+Decided in blee/overview WorkPlan Stage 2.
+#+end_org """
+
+from bisos.gitist import gitGroup_seed  # noqa: F401  _atExit_
+
+from bisos.gitist import gitGroup_seedInfo
+fileFromTemplate = gitGroup_seedInfo.fileFromTemplate
+
+templates = "/bisos/apps/defaults/begin/templates/moded/git"
+
+gitGroup_seedInfo.setup(
+    rules=[
+        # doom-emacs-framework is a fork of Doom Emacs: its .gitignore is upstream's (.local/, ...).
+        fileFromTemplate(".gitignore", f"{templates}/gitignore/emacs+py+tex",
+                         customRepos=["doom-emacs-framework"]),
+    ],
+)

@@ -1,0 +1,49 @@
+#+title: blee/overview: The Overview Repo of the blee gitGroup
+#+DATE: <2026-11-15 Sun>
+#+AUTHOR: Mohsen BANAN
+#+OPTIONS: toc:4
+
+* Overview
+
+Blee is the ByStar Libre-Halaal Emacs Environment. Its repos --- Emacs packages and environments ---
+form the *blee gitGroup*: the git repos under =/bisos/git/bxRepos/blee/=, independent of the git
+server that hosts them. This is the gitGroup's *overview repo*: it drives what is common to all of
+them. It is not a package.
+
+Today that is the gitGroup's consistency rules and its list for Blee's Magit menu, through the
+gitGroup engine of [[https://github.com/bisos-pip/gitist][bisos.gitist]] (the same pattern as
+[[https://github.com/bisos-pip/overview][bisos-pip/overview]]).
+
+* Table of Contents     :TOC:
+- [[#overview][Overview]]
+- [[#the-blee-gitgroup-plant][The blee gitGroup Plant]]
+- [[#support][Support]]
+
+* The blee gitGroup Plant
+
+=py3/bin/blee_gitGroup.spcs= is spread-planted on gitist's =gitGroup-seed.cs=: the gitGroup's name and
+base come from where the file really lives (base: this repo's parent; name: =blee=), so it declares
+only the rules. It is on PATH through a symlink in =/bisos/core/bsip/bin/= (the bsip4 repo).
+
+| Rule         | Every member repo                                                |
+|--------------+------------------------------------------------------------------|
+| =.gitignore= | equals the BISOS template (=gitignore/emacs+py+tex=)             |
+
+There is no =.gitattributes= rule: the only template (=gitattributes/py=) marks every file but =*.py=
+as vendored, which would hide Emacs Lisp from GitHub's language statistics.
+
+#+begin_src bash
+blee_gitGroup.spcs -i gitGroup_status                        # read-only: each member, each rule
+blee_gitGroup.spcs -i gitGroup_diff <repo> .gitignore        # template -> the member's file
+blee_gitGroup.spcs -i gitGroup_update                        # writes missing and stale files
+blee_gitGroup.spcs -i gitGroup_cachedListUpdate              # /bisos/var/gitGroup/blee/cachedList.auth
+#+end_src
+
+The cached list feeds Blee's "Apps -> GitHub MAGIT Menu -> BISOS-Magit gitGroups -> gitGroup blee".
+
+* Support
+
+For support, criticism, comments and questions; please contact the
+author/maintainer\\
+[[http://mohsen.1.banan.byname.net][Mohsen Banan]] at:
+[[http://mohsen.1.banan.byname.net/contact]]
